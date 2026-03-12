@@ -141,8 +141,8 @@ export default function Dashboard() {
   const sidebar = (
     <>
       <div className="p-6 pb-4">
-        <h2 className="text-xl font-serif italic text-[#3d3029]">{greeting}</h2>
-        <p className="text-sm text-[#8e8880] mt-1 leading-relaxed">
+        <h2 className="text-xl font-serif italic text-[#2a1f17]">{greeting}</h2>
+        <p className="text-sm text-[#6b6258] mt-1 leading-relaxed">
           What would you like to know about the research today?
         </p>
       </div>
@@ -151,9 +151,9 @@ export default function Dashboard() {
         <div className="relative">
           <Input
             placeholder="Search"
-            className="bg-white/80 border-[#e0dcd6] text-[#3d3029] placeholder:text-[#b8b2aa] rounded-xl h-10 pr-9"
+            className="bg-white/80 border-[#e0dcd6] text-[#2a1f17] placeholder:text-[#8e8680] rounded-xl h-10 pr-9"
           />
-          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8e8880] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6b6258] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
@@ -166,26 +166,26 @@ export default function Dashboard() {
             onClick={() => { setActiveView(item.id); setSidebarOpen(false); }}
             className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer ${
               activeView === item.id
-                ? "bg-white text-[#3d3029] shadow-sm"
-                : "text-[#5a5247] hover:text-[#3d3029] hover:bg-white/50"
+                ? "bg-white text-[#2a1f17] shadow-sm"
+                : "text-[#3d332c] hover:text-[#2a1f17] hover:bg-white/50"
             }`}
           >
             {item.label}
             {item.id === "sources" && (
-              <span className="ml-1 text-[#8e8880] text-xs">({sources.length})</span>
+              <span className="ml-1 text-[#6b6258] text-xs">({sources.length})</span>
             )}
           </button>
         ))}
       </nav>
 
       <div className="mt-auto p-6 border-t border-[#e8e4de]">
-        <div className="flex items-center gap-2 text-xs text-[#8e8880]">
+        <div className="flex items-center gap-2 text-xs text-[#6b6258]">
           <div className="w-2 h-2 rounded-full bg-[#8b9e7e]" />
           <span>{sources.length} sources</span>
           <span className="text-[#d0ccc4]">&middot;</span>
           <span>Score {overallScore}/100</span>
         </div>
-        <p className="text-xs text-[#b8b2aa] mt-1">Generated March 2026</p>
+        <p className="text-xs text-[#8e8680] mt-1">Generated March 2026</p>
       </div>
     </>
   );
@@ -202,11 +202,11 @@ export default function Dashboard() {
       <header className="lg:hidden sticky top-0 z-40 bg-[#f5f0eb]/90 backdrop-blur-sm border-b border-[#e8e4de]">
         <div className="flex items-center justify-between px-4 h-14">
           <button onClick={() => setSidebarOpen(true)} className="p-2 -ml-2 rounded-xl hover:bg-white/50 cursor-pointer" aria-label="Open menu">
-            <svg className="w-5 h-5 text-[#3d3029]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-[#2a1f17]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <p className="text-sm font-medium text-[#3d3029] truncate">Italian Youth Labor Market</p>
+          <p className="text-sm font-medium text-[#2a1f17] truncate">Italian Youth Labor Market</p>
           <div className="w-9" />
         </div>
       </header>
@@ -218,7 +218,7 @@ export default function Dashboard() {
           <aside className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-72 bg-[#faf8f5] shadow-xl flex flex-col">
             <div className="flex items-center justify-end p-3">
               <button onClick={() => setSidebarOpen(false)} className="p-2 rounded-xl hover:bg-white/50 cursor-pointer" aria-label="Close menu">
-                <svg className="w-5 h-5 text-[#3d3029]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#2a1f17]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -241,8 +241,8 @@ export default function Dashboard() {
           <div className="space-y-8">
             {/* So What? Header */}
             <section>
-              <p className="text-sm font-medium text-[#8e8880] uppercase tracking-widest mb-3">So What?</p>
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#3d3029] leading-snug">
+              <p className="text-sm font-medium text-[#6b6258] uppercase tracking-widest mb-3">So What?</p>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#2a1f17] leading-snug">
                 Youth unemployment hit record lows{" "}
                 <span className="text-[#8b9e7e]">but 156,000 young Italians</span>{" "}
                 still emigrate each year.
@@ -251,13 +251,13 @@ export default function Dashboard() {
 
             {/* Zen View */}
             <section>
-              <p className="text-xs font-medium text-[#8e8880] uppercase tracking-widest mb-4">Zen View</p>
+              <p className="text-xs font-medium text-[#6b6258] uppercase tracking-widest mb-4">Zen View</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {zenStats.map((stat, i) => (
                   <div key={stat.label} className="bg-white rounded-2xl p-6 border border-[#e8e4de]">
-                    <p className="text-xs text-[#8e8880] font-medium mb-2">{stat.label}:</p>
+                    <p className="text-xs text-[#6b6258] font-medium mb-2">{stat.label}:</p>
                     <p className={`text-3xl md:text-4xl font-bold ${zenColors[i]}`}>{stat.value}</p>
-                    <p className="text-xs text-[#b8b2aa] mt-1">{stat.sublabel}</p>
+                    <p className="text-xs text-[#8e8680] mt-1">{stat.sublabel}</p>
                   </div>
                 ))}
               </div>
@@ -266,11 +266,11 @@ export default function Dashboard() {
             {/* Quote + Green callout */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div className="md:col-span-3 bg-white rounded-2xl p-6 border border-[#e8e4de]">
-                <p className="text-xs text-[#8e8880] font-medium mb-3">Key Insight</p>
-                <p className="text-base text-[#5a5247] leading-relaxed italic font-serif">
+                <p className="text-xs text-[#6b6258] font-medium mb-3">Key Insight</p>
+                <p className="text-base text-[#3d332c] leading-relaxed italic font-serif">
                   &ldquo;Italy produces world-class graduates&mdash;then watches 156,000 of them leave each year for better wages abroad.&rdquo;
                 </p>
-                <p className="text-xs text-[#8e8880] mt-3">&mdash; Research finding, 2024&ndash;2026 data</p>
+                <p className="text-xs text-[#6b6258] mt-3">&mdash; Research finding, 2024&ndash;2026 data</p>
               </div>
               <div className="md:col-span-2 bg-[#8b9e7e] rounded-2xl p-6 text-white flex items-center">
                 <p className="text-sm leading-relaxed">
@@ -285,13 +285,13 @@ export default function Dashboard() {
                 onClick={() => setActiveView("insights")}
                 className="bg-white rounded-2xl p-6 border border-[#e8e4de] text-left hover:shadow-md transition-shadow duration-200 cursor-pointer"
               >
-                <h3 className="text-base font-semibold text-[#3d3029] mb-1">Top Findings</h3>
-                <p className="text-sm text-[#8e8880] mb-4">
+                <h3 className="text-base font-semibold text-[#2a1f17] mb-1">Top Findings</h3>
+                <p className="text-sm text-[#6b6258] mb-4">
                   Precarious work and the brain drain dominate the landscape.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {["Unemployment", "Precarious Work", "Brain Drain"].map((t) => (
-                    <span key={t} className="text-xs px-2.5 py-1 bg-[#f5f0eb] text-[#5a5247] rounded-full">{t}</span>
+                    <span key={t} className="text-xs px-2.5 py-1 bg-[#f5f0eb] text-[#3d332c] rounded-full">{t}</span>
                   ))}
                 </div>
               </button>
@@ -299,8 +299,8 @@ export default function Dashboard() {
                 onClick={() => setActiveView("insights")}
                 className="bg-white rounded-2xl p-6 border border-[#e8e4de] text-left hover:shadow-md transition-shadow duration-200 cursor-pointer"
               >
-                <h3 className="text-base font-semibold text-[#3d3029] mb-1">Emerging Opportunities</h3>
-                <p className="text-sm text-[#8e8880] mb-4">
+                <h3 className="text-base font-semibold text-[#2a1f17] mb-1">Emerging Opportunities</h3>
+                <p className="text-sm text-[#6b6258] mb-4">
                   Tech ecosystem valued at &euro;60B with 800K green job gap.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -313,13 +313,13 @@ export default function Dashboard() {
 
             {/* Remaining metrics */}
             <section>
-              <p className="text-xs font-medium text-[#8e8880] uppercase tracking-widest mb-4">Additional Metrics</p>
+              <p className="text-xs font-medium text-[#6b6258] uppercase tracking-widest mb-4">Additional Metrics</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {heroStats.slice(3).map((stat) => (
                   <div key={stat.label} className="bg-white rounded-2xl p-5 border border-[#e8e4de]">
-                    <p className="text-xs text-[#8e8880] font-medium mb-1">{stat.label}</p>
-                    <p className="text-2xl font-bold text-[#3d3029]">{stat.value}</p>
-                    <p className="text-xs text-[#b8b2aa] mt-0.5">{stat.sublabel}</p>
+                    <p className="text-xs text-[#6b6258] font-medium mb-1">{stat.label}</p>
+                    <p className="text-2xl font-bold text-[#2a1f17]">{stat.value}</p>
+                    <p className="text-xs text-[#8e8680] mt-0.5">{stat.sublabel}</p>
                   </div>
                 ))}
               </div>
@@ -331,13 +331,13 @@ export default function Dashboard() {
         {activeView === "insights" && (
           <div className="space-y-12">
             <section>
-              <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#3d3029] mb-4">Research Insights</h1>
-              <p className="text-base text-[#5a5247] max-w-3xl leading-relaxed">{summaryNarrative}</p>
+              <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#2a1f17] mb-4">Research Insights</h1>
+              <p className="text-base text-[#3d332c] max-w-3xl leading-relaxed">{summaryNarrative}</p>
             </section>
 
             <div className="flex items-center gap-4">
               <div className="h-px flex-1 bg-[#e0dcd6]" />
-              <span className="text-xs uppercase tracking-widest text-[#8e8880] font-medium">Findings</span>
+              <span className="text-xs uppercase tracking-widest text-[#6b6258] font-medium">Findings</span>
               <div className="h-px flex-1 bg-[#e0dcd6]" />
             </div>
 
@@ -347,7 +347,7 @@ export default function Dashboard() {
                 <section key={section.id} id={section.id} className="scroll-mt-8">
                   <div className="flex items-center gap-3 mb-8">
                     <div className={`w-3 h-3 rounded-full ${accent.bg}`} />
-                    <h2 className="text-xl md:text-2xl font-serif font-bold text-[#3d3029]">{section.title}</h2>
+                    <h2 className="text-xl md:text-2xl font-serif font-bold text-[#2a1f17]">{section.title}</h2>
                   </div>
 
                   <div className="space-y-8">
@@ -359,7 +359,7 @@ export default function Dashboard() {
                               <p className={`text-2xl md:text-3xl font-bold ${earthyPullQuote(narrative.pullQuoteColor)}`}>
                                 {narrative.pullQuote}
                               </p>
-                              <p className="text-xs text-[#8e8880] mt-2 font-medium uppercase tracking-wide">
+                              <p className="text-xs text-[#6b6258] mt-2 font-medium uppercase tracking-wide">
                                 {narrative.heading}
                               </p>
                             </div>
@@ -367,15 +367,15 @@ export default function Dashboard() {
                         ) : (
                           <div className="lg:col-span-1">
                             <div className={`border-l-4 ${accent.border} pl-4`}>
-                              <h3 className="text-base font-semibold text-[#3d3029]">{narrative.heading}</h3>
+                              <h3 className="text-base font-semibold text-[#2a1f17]">{narrative.heading}</h3>
                             </div>
                           </div>
                         )}
                         <div className="lg:col-span-3">
                           {narrative.pullQuote && (
-                            <h3 className="text-base font-semibold text-[#3d3029] mb-3">{narrative.heading}</h3>
+                            <h3 className="text-base font-semibold text-[#2a1f17] mb-3">{narrative.heading}</h3>
                           )}
-                          <p className="text-base leading-relaxed text-[#5a5247]">
+                          <p className="text-base leading-relaxed text-[#3d332c]">
                             <CitedText text={narrative.body} onCiteClick={scrollToSource} />
                           </p>
                         </div>
@@ -392,7 +392,7 @@ export default function Dashboard() {
         {activeView === "sources" && (
           <div className="space-y-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h2 className="text-2xl font-serif font-bold text-[#3d3029]">Source Registry</h2>
+              <h2 className="text-2xl font-serif font-bold text-[#2a1f17]">Source Registry</h2>
               <div className="flex gap-2">
                 <Input
                   value={sourceSearch}
@@ -403,7 +403,7 @@ export default function Dashboard() {
                 <select
                   value={sourceTypeFilter}
                   onChange={(e) => setSourceTypeFilter(e.target.value)}
-                  className="h-9 rounded-xl border border-[#e0dcd6] bg-white px-3 text-sm text-[#5a5247] cursor-pointer"
+                  className="h-9 rounded-xl border border-[#e0dcd6] bg-white px-3 text-sm text-[#3d332c] cursor-pointer"
                 >
                   <option value="">All types</option>
                   <option value="official">Official</option>
@@ -420,12 +420,12 @@ export default function Dashboard() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-[#e8e4de]">
-                    <TableHead className="w-20 text-[#8e8880]">ID</TableHead>
-                    <TableHead className="text-[#8e8880]">Title</TableHead>
-                    <TableHead className="hidden sm:table-cell text-[#8e8880]">Author</TableHead>
-                    <TableHead className="hidden md:table-cell text-[#8e8880]">Date</TableHead>
-                    <TableHead className="text-[#8e8880]">Type</TableHead>
-                    <TableHead className="hidden sm:table-cell text-[#8e8880]">Relevance</TableHead>
+                    <TableHead className="w-20 text-[#6b6258]">ID</TableHead>
+                    <TableHead className="text-[#6b6258]">Title</TableHead>
+                    <TableHead className="hidden sm:table-cell text-[#6b6258]">Author</TableHead>
+                    <TableHead className="hidden md:table-cell text-[#6b6258]">Date</TableHead>
+                    <TableHead className="text-[#6b6258]">Type</TableHead>
+                    <TableHead className="hidden sm:table-cell text-[#6b6258]">Relevance</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -441,12 +441,12 @@ export default function Dashboard() {
                     >
                       <TableCell className="font-mono text-xs text-[#8b9e7e]">{source.id}</TableCell>
                       <TableCell>
-                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[#3d3029] hover:text-[#8b9e7e] transition text-sm">
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-[#2a1f17] hover:text-[#8b9e7e] transition text-sm">
                           {source.title}
                         </a>
                       </TableCell>
-                      <TableCell className="hidden sm:table-cell text-[#8e8880] text-sm">{source.author}</TableCell>
-                      <TableCell className="hidden md:table-cell text-[#8e8880] text-sm">{source.date}</TableCell>
+                      <TableCell className="hidden sm:table-cell text-[#6b6258] text-sm">{source.author}</TableCell>
+                      <TableCell className="hidden md:table-cell text-[#6b6258] text-sm">{source.date}</TableCell>
                       <TableCell>
                         <Badge variant="outline" className={`text-xs ${earthySourceColor(source.type)}`}>{source.type}</Badge>
                       </TableCell>
@@ -468,7 +468,7 @@ export default function Dashboard() {
         {/* ═══════ AUDIT ═══════ */}
         {activeView === "audit" && (
           <div className="space-y-8">
-            <h2 className="text-2xl font-serif font-bold text-[#3d3029]">Audit Results</h2>
+            <h2 className="text-2xl font-serif font-bold text-[#2a1f17]">Audit Results</h2>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {auditMetrics.map((metric) => {
@@ -477,13 +477,13 @@ export default function Dashboard() {
                 return (
                   <div key={metric.label} className="bg-white rounded-2xl border border-[#e8e4de] p-5">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs text-[#8e8880] uppercase tracking-wide font-medium">{metric.label}</span>
+                      <span className="text-xs text-[#6b6258] uppercase tracking-wide font-medium">{metric.label}</span>
                       <span className={`text-sm font-bold ${numColor}`}>{metric.score}/100</span>
                     </div>
                     <div className="w-full bg-[#f0eeeb] rounded-full h-2">
                       <div className={`h-2 rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${metric.score}%` }} />
                     </div>
-                    <p className="text-xs text-[#8e8880] mt-2">{metric.note}</p>
+                    <p className="text-xs text-[#6b6258] mt-2">{metric.note}</p>
                   </div>
                 );
               })}
@@ -491,7 +491,7 @@ export default function Dashboard() {
 
             {/* Single-source claims */}
             <div className="bg-white rounded-2xl border border-[#e8e4de] p-6">
-              <h3 className="text-sm font-semibold text-[#3d3029] mb-4 uppercase tracking-wide">Single-Source Claims</h3>
+              <h3 className="text-sm font-semibold text-[#2a1f17] mb-4 uppercase tracking-wide">Single-Source Claims</h3>
               <div className="space-y-3">
                 {singleSourceClaims.map((claim) => (
                   <div key={claim.text} className="flex items-start gap-3 p-3 rounded-xl bg-[#faf8f5]">
@@ -506,7 +506,7 @@ export default function Dashboard() {
                       {claim.risk}
                     </Badge>
                     <div>
-                      <p className="text-sm text-[#5a5247]">{claim.text}</p>
+                      <p className="text-sm text-[#3d332c]">{claim.text}</p>
                       <button onClick={() => scrollToSource(claim.source)} className="text-xs text-[#8b9e7e] mt-1 hover:underline cursor-pointer">
                         Source: {claim.source}
                       </button>
@@ -518,13 +518,13 @@ export default function Dashboard() {
 
             {/* Coverage */}
             <div className="bg-white rounded-2xl border border-[#e8e4de] p-6">
-              <h3 className="text-sm font-semibold text-[#3d3029] mb-4 uppercase tracking-wide">Coverage by Sub-Question</h3>
+              <h3 className="text-sm font-semibold text-[#2a1f17] mb-4 uppercase tracking-wide">Coverage by Sub-Question</h3>
               <div className="space-y-3">
                 {coverage.map((cov) => (
                   <div key={cov.question} className="flex items-center gap-3">
                     <span className="text-[#8b9e7e] text-sm">&#10003;</span>
-                    <span className="text-sm flex-1 text-[#5a5247]">{cov.question}</span>
-                    <span className="text-xs text-[#8e8880]">{cov.sources} sources</span>
+                    <span className="text-sm flex-1 text-[#3d332c]">{cov.question}</span>
+                    <span className="text-xs text-[#6b6258]">{cov.sources} sources</span>
                     <Badge
                       variant="outline"
                       className={cov.rating === "Strong" ? "bg-[#eef2eb] text-[#5a6e4e] border-[#c8d4c0]" : "bg-[#faf5e8] text-[#8b7430] border-[#e0d4a8]"}
@@ -541,7 +541,7 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer className="lg:ml-72 border-t border-[#e8e4de] mt-16">
-        <div className="px-6 py-6 text-center text-xs text-[#b8b2aa]">
+        <div className="px-6 py-6 text-center text-xs text-[#8e8680]">
           Deep Research Report &middot; Generated March 2026 &middot; {sources.length} sources &middot; Audit score {overallScore}/100
         </div>
       </footer>
