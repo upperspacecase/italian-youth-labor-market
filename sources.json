@@ -1,0 +1,454 @@
+[
+  {
+    "id": "src-001",
+    "title": "Italy Youth Unemployment Rate — Trading Economics",
+    "url": "https://tradingeconomics.com/italy/youth-unemployment-rate",
+    "author": "Trading Economics",
+    "date": "2026-03",
+    "type": "data",
+    "relevance": 5,
+    "key_claims": [
+      "Youth unemployment fell to 18.9% in January 2026 from 20.9% prior month",
+      "Youth unemployment at 18.8% in November 2025",
+      "Rate increased to 20.50% in December 2025 from 19.10% in November"
+    ]
+  },
+  {
+    "id": "src-002",
+    "title": "Eurozone unemployment at 6.2 percent — EU News",
+    "url": "https://www.eunews.it/en/2025/03/04/eurozone-unemployment-at-6-2-percent-in-italy-it-falls-but-stays-among-the-highest/",
+    "author": "EU News",
+    "date": "2025-03",
+    "type": "news",
+    "relevance": 4,
+    "key_claims": [
+      "EU youth unemployment 15.1% in Nov 2025, Euro area 14.6%",
+      "Italy's youth rate significantly higher than EU/euro area averages"
+    ]
+  },
+  {
+    "id": "src-003",
+    "title": "Euro area unemployment at 6.3% — Eurostat",
+    "url": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-08012026-ap",
+    "author": "Eurostat",
+    "date": "2026-01",
+    "type": "official_data",
+    "relevance": 5,
+    "key_claims": [
+      "Official Eurostat unemployment indicators for EU member states"
+    ]
+  },
+  {
+    "id": "src-004",
+    "title": "Brain drain in Italy: Young talent are fleeing — Fortune",
+    "url": "https://fortune.com/europe/2024/12/10/brain-drain-italy-young-talent-fleeing/",
+    "author": "Fortune Europe",
+    "date": "2024-12",
+    "type": "analysis",
+    "relevance": 5,
+    "key_claims": [
+      "Over 1 million Italians left in past 10 years, one-third aged 25-34",
+      "Share of graduates among emigrants rose from 18% to 58% over two decades",
+      "Brain drain cost Italy €134 billion between 2011-2023",
+      "For every young foreigner settling in Italy, nearly 9 young Italians leave",
+      "Average age leaving family home: 30 years"
+    ]
+  },
+  {
+    "id": "src-005",
+    "title": "Italy Faces Alarm Over Rising Youth Migration — FastBull",
+    "url": "https://www.fastbull.com/news-detail/italy-faces-alarm-over-rising-youth-migration-and-4330476_0",
+    "author": "FastBull",
+    "date": "2025",
+    "type": "news",
+    "relevance": 4,
+    "key_claims": [
+      "156,000 Italian citizens left in 2024 — 36.5% increase over 2023",
+      "Highest emigration figure in 25 years",
+      "Only 53,000 returned home in 2024"
+    ]
+  },
+  {
+    "id": "src-006",
+    "title": "Nearly 100,000 young graduates left Italy over past decade — The Local",
+    "url": "https://www.thelocal.it/20250521/nearly-100000-young-graduates-left-italy-over-past-decade-report-finds",
+    "author": "The Local Italy",
+    "date": "2025-05",
+    "type": "news",
+    "relevance": 4,
+    "key_claims": [
+      "630,000 Italians aged 18-34 officially moved out between 2011-2024",
+      "Net loss of approximately 440,000 young people"
+    ]
+  },
+  {
+    "id": "src-007",
+    "title": "The labor market in Italy, 2000–2024 — IZA World of Labor",
+    "url": "https://wol.iza.org/articles/the-labor-market-in-italy/long",
+    "author": "IZA World of Labor",
+    "date": "2024",
+    "type": "academic",
+    "relevance": 5,
+    "key_claims": [
+      "Employment rate (20-64): 67.1% in 2024, up from 63.0% in 2019",
+      "Youth unemployment peaked at 42.7% in 2014, declined to 20.3% by 2024",
+      "25-34 age group: 23.9% on temporary contracts vs EU average 16.7%",
+      "NEET rates peaked at 22% in 2013, improved to 12.7% in 2023",
+      "Unemployment: North 4.3%, South 11.9% in 2024",
+      "Real wages fell from ~$50,500 (2000) to $48,900 (2023)",
+      "Productivity per hour flat at $52-55 since 2000 vs France $65+, Germany $69",
+      "Youth participation dropped from 38.1% (2000) to 24.7% (2024)"
+    ]
+  },
+  {
+    "id": "src-008",
+    "title": "Can labor policies reduce precarization? Youth employment in Italy — ScienceDirect",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0954349X25001018",
+    "author": "ScienceDirect",
+    "date": "2025",
+    "type": "academic",
+    "relevance": 4,
+    "key_claims": [
+      "Almost half of young people in Italy employed on a temporary basis",
+      "Share of temporary employment among 15-29: 38.2%",
+      "Only 5% of workers aged 55-64 on fixed-term contracts"
+    ]
+  },
+  {
+    "id": "src-009",
+    "title": "Poverty and Temporary Employment in Italy — Springer",
+    "url": "https://link.springer.com/article/10.1007/s40797-024-00297-z",
+    "author": "Italian Economic Journal / Springer",
+    "date": "2024",
+    "type": "academic",
+    "relevance": 4,
+    "key_claims": [
+      "Temporary contracts linked to higher poverty rates among young workers",
+      "Labor market duality remains pronounced up to age 35"
+    ]
+  },
+  {
+    "id": "src-010",
+    "title": "SVIMEZ Report 2025 Executive Summary",
+    "url": "https://www.svimez.it/wp-content/uploads/2025/11/executivesummary2025_eng.pdf",
+    "author": "SVIMEZ",
+    "date": "2025-11",
+    "type": "report",
+    "relevance": 5,
+    "key_claims": [
+      "Mezzogiorno GDP grew 8.5% (2021-2024) vs Centre-North 5.8%",
+      "From 2027, South's growth will fall below North's as PNRR concludes",
+      "Real wages lost more purchasing power in South (-10.2%) vs North (-8.2%)",
+      "2.4 million working poor in Italy, 1.2 million in the South",
+      "25-34 year-olds leaving Italy increased 10% from ~126,000 to ~140,000 annually",
+      "South unemployment 12% vs North 4% in 2024"
+    ]
+  },
+  {
+    "id": "src-011",
+    "title": "Italy's tech ecosystem: Innovation, growth, and emerging opportunities — Tech.eu",
+    "url": "https://tech.eu/2025/06/19/italys-tech-ecosystem-innovation-growth-and-emerging-opportunities/",
+    "author": "Tech.eu",
+    "date": "2025-06",
+    "type": "analysis",
+    "relevance": 4,
+    "key_claims": [
+      "Italy's startup ecosystem valued at €60 billion, 11x increase over decade",
+      "Over 300,000 jobs created by startup ecosystem",
+      "€1.3 billion raised in 2024",
+      "Over 14,000 startups registered as of 2023",
+      "Projected growth rate +15.38% in 2025"
+    ]
+  },
+  {
+    "id": "src-012",
+    "title": "10 promising Italian startups in 2025 — EU-Startups",
+    "url": "https://www.eu-startups.com/2025/02/ciao-innovation-10-promising-italian-startups-you-should-keep-and-eye-on-in-2025/",
+    "author": "EU-Startups",
+    "date": "2025-02",
+    "type": "analysis",
+    "relevance": 3,
+    "key_claims": [
+      "Key sectors: fintech, climate tech, robotics, AI, legal tech, B2B software",
+      "Tech salaries range €40K-€70K+ in Milan and Rome"
+    ]
+  },
+  {
+    "id": "src-013",
+    "title": "Italy's climate tech sector surges — Impact Loop",
+    "url": "https://www.impactloop.com/artikel/italy-s-fastest-growing-climate-tech-startups",
+    "author": "Impact Loop",
+    "date": "2025",
+    "type": "analysis",
+    "relevance": 3,
+    "key_claims": [
+      "Italy's cleantech funding peaked in 2023, 2025 on track to surpass",
+      "Strength in advanced materials, chemicals, circular economy"
+    ]
+  },
+  {
+    "id": "src-014",
+    "title": "Italy's aging workforce solutions — Deloitte",
+    "url": "https://www.deloitte.com/us/en/insights/topics/talent/italy-aging-workforce-solutions.html",
+    "author": "Deloitte Insights",
+    "date": "2025",
+    "type": "report",
+    "relevance": 5,
+    "key_claims": [
+      "Italy's population will fall from 59 million (2024) to 45.8 million by 2080",
+      "34.6% of Italians will be 65+ by 2050 (vs 24.3% today)",
+      "Working-age to non-working-age ratio drops from 3:2 to 1:1 by 2050",
+      "GDP could contract by ~9% by 2050 due to smaller workforce",
+      "AI and automation can partially offset labor scarcity"
+    ]
+  },
+  {
+    "id": "src-015",
+    "title": "OECD Employment Outlook 2025: Italy",
+    "url": "https://www.oecd.org/en/publications/2025/07/oecd-employment-outlook-2025-country-notes_5f33b4c5/italy_a775131b.html",
+    "author": "OECD",
+    "date": "2025-07",
+    "type": "official_data",
+    "relevance": 5,
+    "key_claims": [
+      "Working-age population in Italy will decline by 34% between 2023-2060",
+      "Employment-to-population ratio will decrease by 5.1 pp between 2023-2060"
+    ]
+  },
+  {
+    "id": "src-016",
+    "title": "Cedefop 2025 Skills Forecast: Italy",
+    "url": "https://www.cedefop.europa.eu/files/skills_forecast_-_italy_2025.pdf",
+    "author": "Cedefop / EU",
+    "date": "2025",
+    "type": "official_data",
+    "relevance": 4,
+    "key_claims": [
+      "Total labour force projected to increase ~8.2% over 2020-35",
+      "Highest labour force growth among 65+ age group (6.6%)",
+      "25-49 workforce estimated to drop by 0.7%"
+    ]
+  },
+  {
+    "id": "src-017",
+    "title": "Projecting Italy's labour market: sustainability by 2050 — RIEDS",
+    "url": "https://www.rieds-journal.org/rieds/article/view/520",
+    "author": "Rivista Italiana di Economia Demografia e Statistica",
+    "date": "2025",
+    "type": "academic",
+    "relevance": 4,
+    "key_claims": [
+      "Without productivity improvements, activating more workers won't offset demographic drag"
+    ]
+  },
+  {
+    "id": "src-018",
+    "title": "Italy's NRRP: Latest state of play — European Parliament",
+    "url": "https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2021)698847",
+    "author": "European Parliament Think Tank",
+    "date": "2025",
+    "type": "official_data",
+    "relevance": 4,
+    "key_claims": [
+      "Italy's NRRP: €71.8 billion grants + €122.6 billion loans",
+      "€65.7 billion spent by Feb 2025 (33.8% of EU resources)",
+      "Deadline of Aug 2026 for full implementation"
+    ]
+  },
+  {
+    "id": "src-019",
+    "title": "Youth Bonus under 36: What It Is and How It Works — LDP",
+    "url": "https://ldp-ita.com/news-payroll-en/youth-employment-bonus-under-36-what-it-is-and-how-it-works",
+    "author": "LDP – Payroll & Labour Consulting",
+    "date": "2025",
+    "type": "analysis",
+    "relevance": 4,
+    "key_claims": [
+      "Bonus Giovani: 100% social security exemption up to €500/month for 24 months",
+      "For hiring under-35s on permanent contracts (Sep 2024 - Dec 2025)",
+      "Reduced to 70% for Jan-Apr 2026 hirings unless net employment increase"
+    ]
+  },
+  {
+    "id": "src-020",
+    "title": "Cohesion Decree: Relief for Hiring Young People Under 35 — LDP",
+    "url": "https://ldp-ita.com/news-payroll-en/cohesion-decree-contribution-relief-for-hiring-young-people-under-35",
+    "author": "LDP – Payroll & Labour Consulting",
+    "date": "2025",
+    "type": "analysis",
+    "relevance": 3,
+    "key_claims": [
+      "68,234 hirings took advantage of youth bonus in first 9 months of 2025"
+    ]
+  },
+  {
+    "id": "src-021",
+    "title": "NEET statistics — Eurostat",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Statistics_on_young_people_neither_in_employment_nor_in_education_or_training",
+    "author": "Eurostat",
+    "date": "2025",
+    "type": "official_data",
+    "relevance": 4,
+    "key_claims": [
+      "Italy NEET rate ~14-15.2% in 2024 (15-29 age group)",
+      "EU average 11% in 2024",
+      "Italy saw 11 pp decrease 2014-2024, one of largest drops",
+      "Sicily: 28% NEET, Trentino-South Tyrol: 9%"
+    ]
+  },
+  {
+    "id": "src-022",
+    "title": "Brain drain: inequalities afflicting the South — Unica Radio",
+    "url": "https://www.unicaradio.it/en/blog/2026/02/18/brain-drain-the-inequalities-that-afflict-the-south-and-the-islands/",
+    "author": "Unica Radio",
+    "date": "2026-02",
+    "type": "news",
+    "relevance": 3,
+    "key_claims": [
+      "Brain drain disproportionately affects Southern Italy and islands",
+      "Internal migration from South to North compounds international emigration"
+    ]
+  },
+  {
+    "id": "src-023",
+    "title": "Non è un Paese per giovani: Plight of Young Workers — Harvard Political Review",
+    "url": "https://harvardpolitics.com/plight-of-young-workers/",
+    "author": "Harvard Political Review",
+    "date": "2024",
+    "type": "analysis",
+    "relevance": 4,
+    "key_claims": [
+      "Italy is one of few OECD nations where real wages declined vs 2019",
+      "No national minimum wage system",
+      "Salaries don't correlate with educational attainment"
+    ]
+  },
+  {
+    "id": "src-024",
+    "title": "Italy's 2026 Budget Bill: New measures — DLA Piper",
+    "url": "https://knowledge.dlapiper.com/dlapiperknowledge/globalemploymentlatestdevelopments/2025/italys-2026-budget-bill",
+    "author": "DLA Piper",
+    "date": "2025",
+    "type": "analysis",
+    "relevance": 3,
+    "key_claims": [
+      "2026 Budget Bill extends and modifies youth employment incentives",
+      "Reduction of bonus to 70% for 2026 hirings without net employment increase"
+    ]
+  },
+  {
+    "id": "src-025",
+    "title": "Il Sole 24 ORE: South employment boom but 175,000 youth emigrate",
+    "url": "https://en.ilsole24ore.com/art/from-2027-south-will-slow-down-and-grow-less-north-centre-us-tariffs-risk-over-13000-jobs-AHy9J3yD",
+    "author": "Il Sole 24 ORE",
+    "date": "2025",
+    "type": "news",
+    "relevance": 4,
+    "key_claims": [
+      "175,000 young people emigrated from South despite employment boom 2021-2024",
+      "From 2027, South will slow and grow less than North-Centre",
+      "Over 13,000 jobs at risk from US tariffs"
+    ]
+  },
+  {
+    "id": "src-026",
+    "title": "Giovani 2024: Il bilancio di una generazione — EURES/CNG Report",
+    "url": "https://agenziagioventu.gov.it/giovani-2024-il-bilancio-di-una-generazione-pubblicato-il-rapporto-eures-per-il-consiglio-nazionale-dei-giovani-e-lagenzia-italiana-per-la-gioventu/",
+    "author": "Consiglio Nazionale dei Giovani / Agenzia Italiana per la Gioventù",
+    "date": "2024-04",
+    "type": "report",
+    "relevance": 5,
+    "key_claims": [
+      "79.8% of new contract activations for under-30s in 2023 were precarious",
+      "Average annual pay for young workers 15-24: €9,546",
+      "Fixed-term contracts: €9,038/yr vs permanent: €20,431/yr",
+      "40.9% of under-35 private sector workers on precarious contracts",
+      "Only 39% of young workers received 12+ monthly pay slips in 2022",
+      "17,997 young graduates emigrated in 2021 alone (+281% vs 2011)"
+    ]
+  },
+  {
+    "id": "src-027",
+    "title": "Precarious work, exploitation and poverty: young workers in Italy — Equal Times",
+    "url": "https://www.equaltimes.org/precarious-work-exploitation-and",
+    "author": "Marco Marchese / Equal Times",
+    "date": "2022-10",
+    "type": "analysis",
+    "relevance": 4,
+    "key_claims": [
+      "Italy is the only EU country where wages are lower than in the 1990s (-3%)",
+      "35% of young people aged 15-35 have engaged in undeclared work",
+      "Nearly 50% of workers aged 30-34 earn between €8,000-€16,000/yr"
+    ]
+  },
+  {
+    "id": "src-028",
+    "title": "Italy unemployment falls to 22-year low — Reuters",
+    "url": "https://www.reuters.com/markets/europe/italy-january-jobless-rate-falls-22-year-low-51-2026-03-04/",
+    "author": "Reuters",
+    "date": "2026-03",
+    "type": "news",
+    "relevance": 5,
+    "key_claims": [
+      "Overall unemployment 5.1% in Jan 2026 — 22-year low",
+      "Net 80,000 jobs added in January 2026",
+      "Italy's overall rate now below EU average (5.8%)"
+    ]
+  },
+  {
+    "id": "src-029",
+    "title": "WEF Future of Jobs Report 2025",
+    "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/",
+    "author": "World Economic Forum",
+    "date": "2025-01",
+    "type": "report",
+    "relevance": 4,
+    "key_claims": [
+      "170 million new jobs expected globally by 2030, offset by 92 million displaced",
+      "39% of core skills required by employers will change by 2030",
+      "Over 40% of workers globally will need new skills by 2030"
+    ]
+  },
+  {
+    "id": "src-030",
+    "title": "PwC 2025 Global AI Jobs Barometer — Italy Analysis",
+    "url": "https://www.pwc.com/gx/en/issues/artificial-intelligence/job-barometer/aijb-2025-italy-analysis.pdf",
+    "author": "PwC",
+    "date": "2025",
+    "type": "report",
+    "relevance": 4,
+    "key_claims": [
+      "AI-exposed industries saw productivity growth from 7% to 27% (2018-2024)",
+      "Workers with AI skills command 56% wage premium",
+      "Skills changing 66% faster in AI-exposed occupations"
+    ]
+  },
+  {
+    "id": "src-031",
+    "title": "IMF: Italy Needs Higher Productivity",
+    "url": "https://www.imf.org/en/news/articles/2025/09/15/cf-italy-needs-higher-productivity-and-more-people-working",
+    "author": "IMF",
+    "date": "2025-09",
+    "type": "official_data",
+    "relevance": 5,
+    "key_claims": [
+      "Reforms to boost women's participation could add 0.1-0.4pp to annual growth 2025-2050",
+      "GDP growth: 0.7% (2024), 0.5% (2025), 0.8% expected (2026)"
+    ]
+  },
+  {
+    "id": "src-032",
+    "title": "Il Futuro del Mercato del Lavoro in Italia, Prospettive al 2030 — Federdat",
+    "url": "https://www.federdat.it/il-futuro-del-mercato-del-lavoro-in-italia-prospettive-al-2030/",
+    "author": "Federdat",
+    "date": "2025",
+    "type": "analysis",
+    "relevance": 4,
+    "key_claims": [
+      "45% of anticipated hires proved difficult to fill in 2023",
+      "57% of top 30 growing professions are IT/tech-linked",
+      "Green transition will require 2.4 million workers with green competencies",
+      "Annual labor market deficit of ~150,000 workers projected by 2030"
+    ]
+  }
+]
