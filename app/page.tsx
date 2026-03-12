@@ -1,39 +1,64 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from "@/components/ui/table";
 import {
-  stats,
-  summary,
-  sections,
-  sources,
-  auditMetrics,
-  singleSourceClaims,
-  coverage,
-  getSourceTypeColor,
-  getSummaryBorderColor,
-  getSummaryLabelColor,
+  heroStats, summaryNarrative, narrativeSections, sources,
+  auditMetrics, singleSourceClaims, coverage, getSourceTypeColor,
 } from "@/lib/data/research";
 
+function getSectionAccent(color: string) {
+  const map: Record<string, { border: string; bg: string; text: string; light: string }> = {
+    rose: { border: "border-rose-500", bg: "bg-rose-500", text: "text-rose-500", light: "bg-rose-50" },
+    amber: { border: "border-amber-500", bg: "bg-amber-500", text: "text-amber-500", light: "bg-amber-50" },
+    orange: { border: "border-orange-500", bg: "bg-orange-500", text: "text-orange-500", light: "bg-orange-50" },
+    blue: { border: "border-blue-500", bg: "bg-blue-500", text: "text-blue-500", light: "bg-blue-50" },
+    teal: { border: "border-teal-500", bg: "bg-teal-500", text: "text-teal-500", light: "bg-teal-50" },
+    purple: { border: "border-purple-500", bg: "bg-purple-500", text: "text-purple-500", light: "bg-purple-50" },
+    indigo: { border: "border-indigo-500", bg: "bg-indigo-500", text: "text-indigo-500", light: "bg-indigo-50" },
+  };
+  return map[color] || map.rose;
+}
+
+function CitedText({ text, onCiteClick }: { text: string; onCiteClick: (id: string) => void }) {
+  const parts = text.split(/(\[src-\d+(?:,\s*src-\d+)*\])/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const match = part.match(/^\[(src-\d+(?:,\s*src-\d+)*)\]$/);
+        if (match) {
+          const ids = match[1].split(/,\s*/);
+          return (
+            <span key={i}>
+              [
+              {ids.map((id, j) => (
+                <span key={id}>
+                  {j > 0 && ", "}
+                  <button
+                    onClick={() => onCiteClick(id)}
+                    className="text-blue-600 hover:text-blue-800 hover:underline cursor-pointer font-mono text-xs"
+                  >
+                    {id}
+                  </button>
+                </span>
+              ))}
+              ]
+            </span>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
+  );
+}
+
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("unemployment");
+  const [activeView, setActiveView] = useState<"report" | "sources" | "audit">("report");
   const [sourceSearch, setSourceSearch] = useState("");
   const [sourceTypeFilter, setSourceTypeFilter] = useState("");
   const [highlightedSource, setHighlightedSource] = useState<string | null>(null);
@@ -49,7 +74,7 @@ export default function Dashboard() {
   });
 
   const scrollToSource = useCallback((srcId: string) => {
-    setActiveTab("sources");
+    setActiveView("sources");
     setHighlightedSource(srcId);
     setTimeout(() => {
       const el = document.getElementById(`source-${srcId}`);
@@ -61,389 +86,360 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto max-w-7xl px-4 py-4">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="min-h-screen bg-stone-50 text-stone-900">
+      {/* Hero Header */}
+      <header className="bg-white border-b border-stone-200">
+        <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+          <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight">
-                Italian Youth Labor Market
+              <p className="text-sm font-medium uppercase tracking-widest text-stone-400 mb-3">
+                Deep Research Report
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-stone-900 leading-tight">
+                Italian Youth<br />Labor Market
               </h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Current State & Future Trends (2024–2030)
+              <div className="mt-2 h-1 w-16 bg-rose-500 rounded-full" />
+              <p className="mt-4 text-lg text-stone-500">
+                Current State &amp; Future Trends, 2024&ndash;2030
               </p>
             </div>
-            <div className="flex items-center gap-3 text-sm">
-              <Badge variant="secondary" className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-                32 Sources
-              </Badge>
-              <Badge variant="secondary" className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                Audit: 87/100
-              </Badge>
-              <span className="text-muted-foreground">March 12, 2026</span>
+            <div className="text-right hidden sm:block">
+              <p className="text-3xl font-bold text-stone-300">2024</p>
+              <p className="text-stone-400">&mdash;</p>
+              <p className="text-3xl font-bold text-stone-300">2030</p>
             </div>
           </div>
+
+          {/* Nav */}
+          <nav className="mt-8 flex gap-1">
+            {[
+              { id: "report" as const, label: "Report" },
+              { id: "sources" as const, label: `Sources (${sources.length})` },
+              { id: "audit" as const, label: "Audit" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveView(tab.id)}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition cursor-pointer ${
+                  activeView === tab.id
+                    ? "bg-stone-900 text-white"
+                    : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-6 space-y-6">
-        {/* Stats Bar */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {stats.map((stat) => (
-            <Card key={stat.label} className="bg-card">
-              <CardContent className="p-3">
-                <p className="text-xs text-muted-foreground uppercase tracking-wide">
-                  {stat.label}
-                </p>
-                <p className={`text-xl font-bold mt-1 ${stat.color}`}>
-                  {stat.value}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  {stat.context}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <main className="mx-auto max-w-6xl px-6 py-10">
+        {activeView === "report" && (
+          <div className="space-y-16">
+            {/* Hero Stats Grid */}
+            <section>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                {heroStats.map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className={`text-3xl md:text-4xl font-bold ${stat.color}`}>
+                      {stat.value}
+                    </p>
+                    <p className="text-sm font-semibold text-stone-700 mt-1">
+                      {stat.label}
+                    </p>
+                    <p className="text-xs text-stone-400 mt-0.5">
+                      {stat.sublabel}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-        {/* Executive Summary */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Executive Summary</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-              {summary.map((item) => (
-                <div
-                  key={item.label}
-                  className={`rounded-lg border-l-4 bg-muted/50 p-4 ${getSummaryBorderColor(item.color)}`}
-                >
-                  <p
-                    className={`text-xs font-medium uppercase tracking-wide mb-2 ${getSummaryLabelColor(item.color)}`}
-                  >
-                    {item.label}
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.text}
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {item.sources.map((src) => (
-                      <button
-                        key={src}
-                        onClick={() => scrollToSource(src)}
-                        className="text-xs bg-muted text-blue-400 px-1.5 py-0.5 rounded hover:bg-blue-500/20 transition cursor-pointer"
-                      >
-                        {src}
-                      </button>
+            {/* Executive Summary Narrative */}
+            <section>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl leading-relaxed text-stone-600 font-light">
+                  {summaryNarrative}
+                </p>
+              </div>
+            </section>
+
+            {/* Section divider */}
+            <div className="flex items-center gap-4">
+              <div className="h-px flex-1 bg-stone-200" />
+              <span className="text-xs uppercase tracking-widest text-stone-400 font-medium">Findings</span>
+              <div className="h-px flex-1 bg-stone-200" />
+            </div>
+
+            {/* Narrative Sections */}
+            {narrativeSections.map((section) => {
+              const accent = getSectionAccent(section.color);
+              return (
+                <section key={section.id} id={section.id} className="scroll-mt-8">
+                  {/* Section Header */}
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className={`w-3 h-3 rounded-full ${accent.bg}`} />
+                    <h2 className="text-2xl md:text-3xl font-bold text-stone-900">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  {/* Narratives */}
+                  <div className="space-y-10">
+                    {section.narratives.map((narrative) => (
+                      <div key={narrative.heading} className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                        {/* Pull quote / stat - left column on large screens */}
+                        {narrative.pullQuote ? (
+                          <div className="lg:col-span-1">
+                            <div className={`${accent.light} rounded-2xl p-6 text-center lg:text-left`}>
+                              <p className={`text-3xl md:text-4xl font-bold ${narrative.pullQuoteColor || accent.text}`}>
+                                {narrative.pullQuote}
+                              </p>
+                              <p className="text-xs text-stone-500 mt-2 font-medium uppercase tracking-wide">
+                                {narrative.heading}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="lg:col-span-1">
+                            <div className={`border-l-4 ${accent.border} pl-4`}>
+                              <h3 className="text-lg font-semibold text-stone-800">
+                                {narrative.heading}
+                              </h3>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Body text - right columns */}
+                        <div className="lg:col-span-3">
+                          {narrative.pullQuote && (
+                            <h3 className="text-lg font-semibold text-stone-800 mb-3">
+                              {narrative.heading}
+                            </h3>
+                          )}
+                          <p className="text-base leading-relaxed text-stone-600">
+                            <CitedText text={narrative.body} onCiteClick={scrollToSource} />
+                          </p>
+                        </div>
+                      </div>
                     ))}
                   </div>
+                </section>
+              );
+            })}
+          </div>
+        )}
+
+        {activeView === "sources" && (
+          <div className="space-y-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="text-2xl font-bold">Source Registry</h2>
+              <div className="flex gap-2">
+                <Input
+                  value={sourceSearch}
+                  onChange={(e) => setSourceSearch(e.target.value)}
+                  placeholder="Search sources..."
+                  className="w-48 h-9 text-sm bg-white border-stone-200"
+                />
+                <select
+                  value={sourceTypeFilter}
+                  onChange={(e) => setSourceTypeFilter(e.target.value)}
+                  className="h-9 rounded-md border border-stone-200 bg-white px-3 text-sm"
+                >
+                  <option value="">All types</option>
+                  <option value="official">Official</option>
+                  <option value="academic">Academic</option>
+                  <option value="report">Reports</option>
+                  <option value="news">News</option>
+                  <option value="analysis">Analysis</option>
+                  <option value="data">Data</option>
+                </select>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl border border-stone-200 overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-stone-200">
+                    <TableHead className="w-20 text-stone-500">ID</TableHead>
+                    <TableHead className="text-stone-500">Title</TableHead>
+                    <TableHead className="hidden sm:table-cell text-stone-500">Author</TableHead>
+                    <TableHead className="hidden md:table-cell text-stone-500">Date</TableHead>
+                    <TableHead className="text-stone-500">Type</TableHead>
+                    <TableHead className="hidden sm:table-cell text-stone-500">Relevance</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredSources.map((source) => (
+                    <TableRow
+                      key={source.id}
+                      id={`source-${source.id}`}
+                      className={`border-stone-100 ${
+                        highlightedSource === source.id
+                          ? "bg-blue-50 transition-colors duration-1000"
+                          : "hover:bg-stone-50"
+                      }`}
+                    >
+                      <TableCell className="font-mono text-xs text-blue-600">
+                        {source.id}
+                      </TableCell>
+                      <TableCell>
+                        <a
+                          href={source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-stone-700 hover:text-blue-600 transition text-sm"
+                        >
+                          {source.title}
+                        </a>
+                      </TableCell>
+                      <TableCell className="hidden sm:table-cell text-stone-500 text-sm">
+                        {source.author}
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell text-stone-500 text-sm">
+                        {source.date}
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          variant="outline"
+                          className={`text-xs ${getSourceTypeColor(source.type)}`}
+                        >
+                          {source.type}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="hidden sm:table-cell">
+                        <div className="flex gap-0.5">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full ${
+                                i <= source.relevance
+                                  ? "bg-blue-500"
+                                  : "bg-stone-200"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+        )}
+
+        {activeView === "audit" && (
+          <div className="space-y-8">
+            <h2 className="text-2xl font-bold">Audit Results</h2>
+
+            {/* Metrics */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {auditMetrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="bg-white rounded-xl border border-stone-200 p-5"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs text-stone-400 uppercase tracking-wide font-medium">
+                      {metric.label}
+                    </span>
+                    <span
+                      className={`text-sm font-bold ${
+                        metric.score >= 85
+                          ? "text-emerald-600"
+                          : metric.score >= 75
+                          ? "text-amber-600"
+                          : "text-rose-600"
+                      }`}
+                    >
+                      {metric.score}/100
+                    </span>
+                  </div>
+                  <div className="w-full bg-stone-100 rounded-full h-2">
+                    <div
+                      className={`h-2 rounded-full transition-all duration-500 ${
+                        metric.score >= 85
+                          ? "bg-emerald-500"
+                          : metric.score >= 75
+                          ? "bg-amber-500"
+                          : "bg-rose-500"
+                      }`}
+                      style={{ width: `${metric.score}%` }}
+                    />
+                  </div>
+                  <p className="text-xs text-stone-500 mt-2">{metric.note}</p>
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex flex-wrap h-auto gap-1 bg-muted/50 p-1">
-            {[
-              ...sections.map((s) => ({ id: s.id, label: s.title.replace(/^\d+\.\s*/, "") })),
-              { id: "sources", label: "Sources" },
-              { id: "audit", label: "Audit" },
-            ].map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="text-xs sm:text-sm px-3 py-1.5"
-              >
-                {tab.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Section Tabs */}
-          {sections.map((section) => (
-            <TabsContent key={section.id} value={section.id}>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{section.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground">
-                    {section.subtitle}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <Accordion
-                    multiple
-                    defaultValue={section.findings
-                      .filter((f) => f.defaultOpen)
-                      .map((_, i) => i)}
-                  >
-                    {section.findings.map((finding, fi) => (
-                      <AccordionItem key={finding.title} value={fi}>
-                        <AccordionTrigger className="text-sm font-semibold">
-                          {finding.title}
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          <div className="space-y-2">
-                            {finding.points.map((point, pi) => (
-                              <div key={pi} className="flex gap-2 text-sm">
-                                <span className="text-muted-foreground mt-0.5 shrink-0">
-                                  &bull;
-                                </span>
-                                <div>
-                                  <span className="text-foreground/80">
-                                    {point.text}
-                                  </span>
-                                  {point.sources.map((src) => (
-                                    <button
-                                      key={src}
-                                      onClick={() => scrollToSource(src)}
-                                      className="text-xs text-blue-400 ml-1 hover:underline cursor-pointer"
-                                    >
-                                      [{src}]
-                                    </button>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
-
-          {/* Sources Tab */}
-          <TabsContent value="sources">
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <CardTitle>Source Registry</CardTitle>
-                  <div className="flex gap-2">
-                    <Input
-                      value={sourceSearch}
-                      onChange={(e) => setSourceSearch(e.target.value)}
-                      placeholder="Search sources..."
-                      className="w-48 h-8 text-sm"
-                    />
-                    <select
-                      value={sourceTypeFilter}
-                      onChange={(e) => setSourceTypeFilter(e.target.value)}
-                      className="h-8 rounded-md border bg-background px-3 text-sm"
-                    >
-                      <option value="">All types</option>
-                      <option value="official">Official</option>
-                      <option value="academic">Academic</option>
-                      <option value="report">Reports</option>
-                      <option value="news">News</option>
-                      <option value="analysis">Analysis</option>
-                      <option value="data">Data</option>
-                    </select>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="w-20">ID</TableHead>
-                        <TableHead>Title</TableHead>
-                        <TableHead className="hidden sm:table-cell">Author</TableHead>
-                        <TableHead className="hidden md:table-cell">Date</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead className="hidden sm:table-cell">Relevance</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {filteredSources.map((source) => (
-                        <TableRow
-                          key={source.id}
-                          id={`source-${source.id}`}
-                          className={
-                            highlightedSource === source.id
-                              ? "bg-blue-500/10 transition-colors duration-1000"
-                              : ""
-                          }
-                        >
-                          <TableCell className="font-mono text-xs text-blue-400">
-                            {source.id}
-                          </TableCell>
-                          <TableCell>
-                            <a
-                              href={source.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-foreground/80 hover:text-blue-400 transition text-sm"
-                            >
-                              {source.title}
-                            </a>
-                          </TableCell>
-                          <TableCell className="hidden sm:table-cell text-muted-foreground text-sm">
-                            {source.author}
-                          </TableCell>
-                          <TableCell className="hidden md:table-cell text-muted-foreground text-sm">
-                            {source.date}
-                          </TableCell>
-                          <TableCell>
-                            <Badge
-                              variant="outline"
-                              className={`text-xs ${getSourceTypeColor(source.type)}`}
-                            >
-                              {source.type}
-                            </Badge>
-                          </TableCell>
-                          <TableCell className="hidden sm:table-cell">
-                            <div className="flex gap-0.5">
-                              {[1, 2, 3, 4, 5].map((i) => (
-                                <div
-                                  key={i}
-                                  className={`w-2 h-2 rounded-full ${
-                                    i <= source.relevance
-                                      ? "bg-blue-400"
-                                      : "bg-muted"
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Audit Tab */}
-          <TabsContent value="audit" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Audit Results</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  {auditMetrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="rounded-lg bg-muted/50 p-4"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide">
-                          {metric.label}
-                        </span>
-                        <span
-                          className={`text-sm font-bold ${
-                            metric.score >= 85
-                              ? "text-emerald-400"
-                              : metric.score >= 75
-                              ? "text-yellow-400"
-                              : "text-red-400"
-                          }`}
-                        >
-                          {metric.score}/100
-                        </span>
-                      </div>
-                      <div className="w-full bg-muted rounded-full h-1.5">
-                        <div
-                          className={`h-1.5 rounded-full transition-all duration-500 ${
-                            metric.score >= 85
-                              ? "bg-emerald-400"
-                              : metric.score >= 75
-                              ? "bg-yellow-400"
-                              : "bg-red-400"
-                          }`}
-                          style={{ width: `${metric.score}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-2">
-                        {metric.note}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">Single-Source Claims</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
+            {/* Single Source Claims */}
+            <div className="bg-white rounded-xl border border-stone-200 p-6">
+              <h3 className="text-sm font-semibold text-stone-700 mb-4 uppercase tracking-wide">
+                Single-Source Claims
+              </h3>
+              <div className="space-y-3">
                 {singleSourceClaims.map((claim) => (
                   <div
                     key={claim.text}
-                    className="rounded-lg bg-muted/50 p-3 flex items-start gap-3"
+                    className="flex items-start gap-3 p-3 rounded-lg bg-stone-50"
                   >
                     <Badge
                       variant="outline"
                       className={`shrink-0 mt-0.5 ${
                         claim.risk === "Medium"
-                          ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
-                          : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                          ? "bg-amber-50 text-amber-700 border-amber-200"
+                          : "bg-emerald-50 text-emerald-700 border-emerald-200"
                       }`}
                     >
                       {claim.risk}
                     </Badge>
                     <div>
-                      <p className="text-sm text-foreground/80">{claim.text}</p>
+                      <p className="text-sm text-stone-700">{claim.text}</p>
                       <button
                         onClick={() => scrollToSource(claim.source)}
-                        className="text-xs text-blue-400 mt-1 hover:underline cursor-pointer"
+                        className="text-xs text-blue-600 mt-1 hover:underline cursor-pointer"
                       >
                         Source: {claim.source}
                       </button>
                     </div>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm">
-                  Coverage by Sub-Question
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
+            {/* Coverage */}
+            <div className="bg-white rounded-xl border border-stone-200 p-6">
+              <h3 className="text-sm font-semibold text-stone-700 mb-4 uppercase tracking-wide">
+                Coverage by Sub-Question
+              </h3>
+              <div className="space-y-3">
                 {coverage.map((cov) => (
-                  <div
-                    key={cov.question}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="text-emerald-400 text-sm">&#10003;</span>
-                    <span className="text-sm flex-1">{cov.question}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {cov.sources} sources
-                    </span>
+                  <div key={cov.question} className="flex items-center gap-3">
+                    <span className="text-emerald-500 text-sm">&#10003;</span>
+                    <span className="text-sm flex-1 text-stone-700">{cov.question}</span>
+                    <span className="text-xs text-stone-400">{cov.sources} sources</span>
                     <Badge
                       variant="outline"
                       className={
                         cov.rating === "Strong"
-                          ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-                          : "bg-yellow-500/20 text-yellow-400 border-yellow-500/30"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          : "bg-amber-50 text-amber-700 border-amber-200"
                       }
                     >
                       {cov.rating}
                     </Badge>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Footer */}
-      <footer className="border-t mt-12">
-        <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-muted-foreground">
-          Deep Research Dashboard &middot; Generated March 12, 2026 &middot; 32
-          sources &middot; Audit score 87/100
+      <footer className="border-t border-stone-200 mt-16">
+        <div className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-stone-400">
+          Deep Research Report &middot; Generated March 2026 &middot; {sources.length} sources &middot; Audit score 87/100
         </div>
       </footer>
     </div>
